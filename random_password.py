@@ -1,6 +1,8 @@
 import random
+import csv
+import os
 
-input_file = r'C:\Users\Teofil\Desktop\passwords\password.txt'
+input_file = r'C:\Users\Teofil\Desktop\passwords\passwords.csv'
 
 def generate_password(lenght):
     password = ''
@@ -17,9 +19,20 @@ def generate_password(lenght):
     return password
 
 
-def write_password(password):
-    with open(input_file, 'w') as file:
-        file.write(password)
-    
+def write_password(lenght,account):
+    password = generate_password(lenght)
+    accound_data = [account,password]
+    head = ['Account','Password']
 
-write_password(generate_password(20))
+    if os.path.exists(input_file) is False:
+        with open(input_file, 'w',newline='') as file:
+            writer = csv.writer(file)
+            writer.writerow(head)
+
+
+    with open(input_file, 'a',newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow(accound_data)
+
+
+

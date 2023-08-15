@@ -1,9 +1,11 @@
 from cryptography.fernet import Fernet
 import os
 import pyperclip
+import csv
 
-input_file = r'C:\Users\Teofil\Desktop\passwords\password.txt'
-output_file = r'C:\Users\Teofil\Desktop\passwords\en_password.txt'
+input_file = r'C:\Users\Teofil\Desktop\passwords\passwords.csv'
+output_file = r'C:\Users\Teofil\Desktop\passwords\en_passwords.csv'
+
 
 def encrypt_file(key,decrypt_file_path,encrypt_file_path):
     with open(decrypt_file_path, 'rb') as file:
@@ -16,7 +18,7 @@ def encrypt_file(key,decrypt_file_path,encrypt_file_path):
         file.write(encrypted_data)
     os.remove(decrypt_file_path)
 
-# encrypt_file('RPN73m5sNscQ8Lv1sxG31gId-7sl-9s2byJqvZXvylg=',input_file,output_file)
+
 
 def decrypt_file(key, decrypt_file_path, encrypt_file_path):
     with open(encrypt_file_path, 'rb') as file:
@@ -33,11 +35,3 @@ def decrypt_file(key, decrypt_file_path, encrypt_file_path):
         pyperclip.copy(password)
     os.remove(decrypt_file_path)
 
-
-
-# decrypt_file('RPN73m5sNscQ8Lv1sxG31gId-7sl-9s2byJqvZXvylg=',input_file,output_file)
-
-def generate_key():
-    return Fernet.generate_key()
-
-print(generate_key())
