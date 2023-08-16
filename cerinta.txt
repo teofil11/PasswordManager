@@ -1,1 +1,0 @@
-Generare de parolă: Realizează un generator de parole securizate, care să ofere opțiuni de personalizare a complexității parolelor și să le salveze într-un fișier criptat.
